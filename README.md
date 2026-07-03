@@ -77,6 +77,3 @@ api.upload_header(path)
 * Python 3.9+
 * requests
 
-## مجوز
-
-MIT License
