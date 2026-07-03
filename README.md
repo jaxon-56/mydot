@@ -1,25 +1,27 @@
 # MyDot Python API
 
-یک کتابخانه غیررسمی برای کار با API پلتفرم **MyDot** که با استفاده از `requests` توسعه داده شده است. این کتابخانه بیشتر Endpointهای نسخه وب MyDot را پوشش می‌دهد و استفاده از آن را تنها با چند خط کد امکان‌پذیر می‌کند.
+یک کتابخانه غیررسمی برای کار با API پلتفرم **MyDot** که با استفاده از `requests` توسعه داده شده است. این پروژه بسیاری از Endpointهای نسخه وب MyDot را در قالب متدهای ساده و خوانا در اختیار توسعه‌دهندگان قرار می‌دهد.
+
+> **قبل از استفاده، حتماً فایل `mydot.py` موجود در این مخزن را دانلود کرده و در کنار پروژه خود قرار دهید.** تمام کلاس‌ها و متدهای کتابخانه داخل این فایل قرار دارند.
 
 ## امکانات
 
-* 🔐 Login / Authentication
-* 👤 دریافت و ویرایش پروفایل
-* 📸 آپلود و تغییر Avatar
-* 🖼️ آپلود و تغییر Header
-* 📝 مشاهده پروفایل کاربران
+* 🔐 ورود به حساب کاربری
+* 👤 دریافت اطلاعات پروفایل
+* ✏️ ویرایش پروفایل
+* 📸 تغییر تصویر پروفایل (Avatar)
+* 🖼️ تغییر تصویر هدر (Header)
 * 👥 دریافت Followers و Following
-* ❤️ مشاهده فعالیت‌های Like
+* 📝 مشاهده پروفایل سایر کاربران
+* ❤️ دریافت فعالیت‌های لایک کاربران
 * 📰 دریافت Home Timeline
 * ✨ دریافت Suggested Timeline
 * 🔥 دریافت Trending Hashtags
 * 🔔 دریافت Notifications
-* 💬 دریافت Conversation List
-* 📨 مدیریت پیام‌ها
+* 💬 دریافت لیست گفتگوها و پیام‌ها
 * 📄 دریافت پست‌های کاربران
 * 🔍 جستجوی کاربران و محتوا
-* ⚡ مدیریت Session و Cookie به‌صورت خودکار
+* ⚡ مدیریت خودکار Session و Cookie
 
 ## نصب
 
@@ -27,87 +29,47 @@
 pip install requests
 ```
 
+سپس فایل **`mydot.py`** را از این مخزن دانلود کرده و کنار فایل پروژه خود قرار دهید.
+
 ## شروع سریع
 
 ```python
 from mydot import MyDotAPI
 
 api = MyDotAPI()
+
 api.login("username", "password")
 
 print(api.profile())
 ```
 
-## نمونه متدها
-
-### ورود
+## متدهای موجود
 
 ```python
 api.login(username, password)
-```
 
-### پروفایل
-
-```python
 api.profile()
 api.user_profile(username)
-api.edit_profile(
-    display_name="AmirAbas",
-    bio="Python Developer",
-    website="https://example.com",
-    location="Iran"
-)
-```
+api.edit_profile(...)
 
-### تایم‌لاین
-
-```python
 api.timeline()
 api.suggested_timeline()
-```
 
-### ترندها
-
-```python
-api.trending_hashtags()
-```
-
-### اعلان‌ها
-
-```python
 api.notifications()
-```
 
-### گفتگوها
+api.trending_hashtags()
 
-```python
 api.conversations()
 api.messages(conversation_id)
-```
 
-### دنبال‌کنندگان
+api.followers(username)
+api.following(username)
 
-```python
-api.followers("username")
-api.following("username")
-```
-
-### فعالیت‌ها
-
-```python
 api.user_activity(user_id, action_type="like")
-```
 
-### آپلود آواتار
+api.upload_avatar(path)
 
-```python
-api.upload_avatar("avatar.png")
-```
-
-### آپلود هدر
-
-```python
-api.upload_header("header.jpg")
+api.upload_header(path)
 ```
 
 ## نیازمندی‌ها
@@ -115,3 +77,6 @@ api.upload_header("header.jpg")
 * Python 3.9+
 * requests
 
+## مجوز
+
+MIT License
